@@ -6,7 +6,7 @@
 
 import express from "express";
 import { MongoClient } from "mongodb";
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
 
 
 dotenv.config()
@@ -171,7 +171,7 @@ const movies = [
   }
 ];
 
-  const MONGO_URL='mongodb+srv://Aruna:Aruna123@cluster0.ndwq8ot.mongodb.net';
+  const MONGO_URL=process.env.MONGO_URL || 'mongodb+srv://Aruna:Aruna123@cluster0.ndwq8ot.mongodb.net';
 
   // const MONGO_URL= "";
 
