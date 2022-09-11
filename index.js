@@ -13,7 +13,7 @@ dotenv.config()
 
 
 const app = express();
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT;
 
 const movies = [
   {
@@ -171,8 +171,7 @@ const movies = [
   }
 ];
 
-  const MONGO_URL=process.env.MONGO_URL || 'mongodb+srv://Aruna:Aruna123@cluster0.ndwq8ot.mongodb.net';
-
+  const MONGO_URL=process.env.MONGO_URL;
   // const MONGO_URL= "";
 
   async function createConnection(){
