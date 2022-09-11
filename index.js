@@ -10,11 +10,11 @@ import dotenv from 'dotenv'
 
 
 dotenv.config()
-console.log(process.env)
+console.log(process.env.MONGO_URL)
 
 
 const app = express();
-const PORT = 9000;
+const PORT = process.env.PORT;
 
 const movies = [
   {
@@ -172,15 +172,18 @@ const movies = [
   }
 ];
 
-  const MONGO_URL= "mongodb://localhost";
+  const MONGO_URL=process.env.MONGO_URL;
 
   // const MONGO_URL= "";
 
   async function createConnection(){
-    const client = new MongoClient(MONGO_URL);
+    try{
+      const client = new MongoClient(MONGO_URL);
     await client.connect();
     console.log("Connected Mongo");
     return client;
+    }catch(error){console.log("error.......  ",error)}
+    
   }
 const client = await createConnection()
 app.use(express.json())
