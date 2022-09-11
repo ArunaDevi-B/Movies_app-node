@@ -171,7 +171,7 @@ const movies = [
   }
 ];
 
-  const MONGO_URL=process.env.MONGO_URL || 'mongodb+srv://Aruna:Aruna123@cluster0.ndwq8ot.mongodb.net';
+  const MONGO_URL='mongodb+srv://Aruna:Aruna123@cluster0.ndwq8ot.mongodb.net';
 
   // const MONGO_URL= "";
 
