@@ -10,11 +10,10 @@ import dotenv from 'dotenv'
 
 
 dotenv.config()
-console.log(process.env.MONGO_URL)
 
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 9000;
 
 const movies = [
   {
@@ -172,7 +171,7 @@ const movies = [
   }
 ];
 
-  const MONGO_URL=process.env.MONGO_URL;
+  const MONGO_URL=process.env.MONGO_URL || 'mongodb+srv://Aruna:Aruna123@cluster0.ndwq8ot.mongodb.net';
 
   // const MONGO_URL= "";
 
