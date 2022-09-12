@@ -31,16 +31,17 @@ const MONGO_URL=process.env.MONGO_URL;
 export const client = await createConnection()
 
 app.use(express.json());
-app.use('/', movieRouter);
 app.use(() => {
   console.log('Some one called the api');
   console.log('Api called at - ',  new Date());
 });
 
 
+app.get("/", (req,res)=>{
+  res.send("Hello Everyone :D")
+})
 
-
-app.use("/", movieRouter)
+app.use("/movies", movieRouter)
 
 app.listen(PORT,()=>{console.log("server started on port", PORT)})
 
