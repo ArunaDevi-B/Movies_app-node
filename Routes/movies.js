@@ -1,5 +1,6 @@
 import express from 'express';
-import { getMoviesById, deleteMovieById, getAllMovies, addMovie } from "../helper.js";
+import { Db } from 'mongodb';
+import { getMoviesById, deleteMovieById, getAllMovies, addMovie, updateMovie } from "../helper.js";
 
 const router = express.Router();
 
@@ -48,5 +49,14 @@ router.delete("/:id",async (req,res)=>{
   res.send(movie);
 })
 // Post method - to insert data to db 
+
+//update movie
+router.put("/:id",async(req,res)=>{
+  const { id } = req.params;
+  const updateMovie = req.body;
+  // db.movies.updateOne({id : "6"}, { $set : updateMovie})
+  const updatedMovie = await updateMovie(updateMovie, id)
+  res.send(updatedMovie);
+})
 
 export const movieRouter = router;
