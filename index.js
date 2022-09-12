@@ -31,13 +31,13 @@ const MONGO_URL=process.env.MONGO_URL;
 export const client = await createConnection()
 
 app.use(express.json());
-
+app.use('/', movieRouter);
 app.use(() => {
   console.log('Some one called the api');
   console.log('Api called at - ',  new Date());
 });
 
-// app.use('/', movieRouter);
+
 app.get("/", (req,res)=>{
   res.send("Hello Everyone :D")
 })
