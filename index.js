@@ -38,11 +38,9 @@ app.use(() => {
 });
 
 
-app.get("/", (req,res)=>{
-  res.send("Hello Everyone :D")
-})
 
-app.use("/movies", movieRouter)
+
+app.use("/", movieRouter)
 
 app.listen(PORT,()=>{console.log("server started on port", PORT)})
 
