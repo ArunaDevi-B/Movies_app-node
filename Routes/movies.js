@@ -26,7 +26,7 @@ const router = express.Router();
 //     res.send(movie);
 // });
 
-router.get("/", async (req,res)=>{
+app.get("/", async (req,res)=>{
   // const { language,rating } = req.query;
   // console.log(req.query.rating);
   // let filteredRating = movies;
@@ -64,7 +64,7 @@ console.log('check type: ', typeof req.query.rating)
 
 
 //send only movie with the matched id
-router.get("/:id",async (req,res)=>{
+app.get("/:id",async (req,res)=>{
     const { id } = req.params;
     console.log(id);
     const movie = await getMoviesById(id)
@@ -72,14 +72,14 @@ router.get("/:id",async (req,res)=>{
   })
 
 //delete a movie with id
-router.delete("/:id",async (req,res)=>{
+app.delete("/:id",async (req,res)=>{
   const { id } = req.params;
   const movie = await deleteMovieById(id);
   res.send(movie);
 })
 // Post method - to insert data to db 
 
-router.post("/", async (req,res)=>{
+app.post("/", async (req,res)=>{
   // db.movies.insertMany(movies)
   const newMovies = req.body;
   console.log(newMovies);
