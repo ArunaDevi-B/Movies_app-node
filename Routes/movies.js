@@ -4,8 +4,11 @@ import { getMoviesById, deleteMovieById, getAllMovies, addMovie } from "../helpe
 const router = express.Router();
 
 
+router.get("/", (req,res)=>{
+  res.send("Hello Everyone :D")
+})
 
-router.get("/", async (req,res)=>{
+router.get("/movies", async (req,res)=>{
   
 console.log('check type: ', typeof req.query.rating)
   //getting data from mongodb
@@ -21,7 +24,7 @@ console.log('check type: ', typeof req.query.rating)
   res.send(movie);
 })
 
-router.post("/", async (req,res)=>{
+router.post("/movies", async (req,res)=>{
   // db.movies.insertMany(movies)
   const newMovies = req.body;
   console.log(newMovies);
@@ -33,7 +36,7 @@ router.post("/", async (req,res)=>{
 
 
 //send only movie with the matched id
-router.get("/:id",async (req,res)=>{
+router.get("/movies/:id",async (req,res)=>{
     const { id } = req.params;
     console.log(id);
     const movie = await getMoviesById(id)
@@ -41,7 +44,7 @@ router.get("/:id",async (req,res)=>{
   })
 
 //delete a movie with id
-router.delete("/:id",async (req,res)=>{
+router.delete("/movies/:id",async (req,res)=>{
   const { id } = req.params;
   const movie = await deleteMovieById(id);
   res.send(movie);
