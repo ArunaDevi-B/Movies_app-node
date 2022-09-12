@@ -38,7 +38,7 @@ app.use(() => {
 
 // app.use('/', movieRouter);
 
-app.get("/", async (req,res)=>{
+app.get("/movies", async (req,res)=>{
   // const { language,rating } = req.query;
   // console.log(req.query.rating);
   // let filteredRating = movies;
@@ -76,7 +76,7 @@ console.log('check type: ', typeof req.query.rating)
 
 
 //send only movie with the matched id
-app.get("/:id",async (req,res)=>{
+app.get("/movies/:id",async (req,res)=>{
     const { id } = req.params;
     console.log(id);
     const movie = await getMoviesById(id)
@@ -84,14 +84,14 @@ app.get("/:id",async (req,res)=>{
   })
 
 //delete a movie with id
-app.delete("/:id",async (req,res)=>{
+app.delete("/movies/:id",async (req,res)=>{
   const { id } = req.params;
   const movie = await deleteMovieById(id);
   res.send(movie);
 })
 // Post method - to insert data to db 
 
-app.post("/", async (req,res)=>{
+app.post("/movies", async (req,res)=>{
   // db.movies.insertMany(movies)
   const newMovies = req.body;
   console.log(newMovies);
