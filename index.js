@@ -8,11 +8,11 @@ import express from "express";
 import { MongoClient } from "mongodb";
 import dotenv from 'dotenv';
 import { getMoviesById, deleteMovieById, getAllMovies, addMovie } from "./helper.js";
-// import { movieRouter } from './Routes/movies.js';
+import { movieRouter } from './Routes/movies.js';
 
 dotenv.config()
 
-
+ 
 const app = express();
 const PORT = process.env.PORT;
 const MONGO_URL=process.env.MONGO_URL;
@@ -41,6 +41,9 @@ app.use(() => {
 app.get("/", (req,res)=>{
   res.send("Hello Everyone :D")
 })
+
+app.use("/movies", movieRouter)
+
 app.listen(PORT,()=>{console.log("server started on port", PORT)})
 
 

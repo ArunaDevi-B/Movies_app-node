@@ -1,7 +1,7 @@
 import express from 'express';
 import { getMoviesById, deleteMovieById, getAllMovies, addMovie } from "../helper.js";
 
-// const router = express.Router();
+const router = express.Router();
 
 // router.get("/movies",(req,res)=>{
 //     const { language } = req.query;
@@ -26,7 +26,7 @@ import { getMoviesById, deleteMovieById, getAllMovies, addMovie } from "../helpe
 //     res.send(movie);
 // });
 
-app.get("/movies", async (req,res)=>{
+router.get("/", async (req,res)=>{
   // const { language,rating } = req.query;
   // console.log(req.query.rating);
   // let filteredRating = movies;
@@ -50,7 +50,13 @@ console.log('check type: ', typeof req.query.rating)
   res.send(movie);
 })
 
-
+router.post("/", async (req,res)=>{
+  // db.movies.insertMany(movies)
+  const newMovies = req.body;
+  console.log(newMovies);
+  const movie=await addMovie(newMovies);
+  res.send(movie);
+});
 
 // router.get("/movies",(req,res)=>{
 //     res.send(movies);
@@ -64,7 +70,7 @@ console.log('check type: ', typeof req.query.rating)
 
 
 //send only movie with the matched id
-app.get("/movies/:id",async (req,res)=>{
+router.get("/:id",async (req,res)=>{
     const { id } = req.params;
     console.log(id);
     const movie = await getMoviesById(id)
@@ -72,19 +78,11 @@ app.get("/movies/:id",async (req,res)=>{
   })
 
 //delete a movie with id
-app.delete("/movies/:id",async (req,res)=>{
+router.delete("/:id",async (req,res)=>{
   const { id } = req.params;
   const movie = await deleteMovieById(id);
   res.send(movie);
 })
 // Post method - to insert data to db 
 
-app.post("/movies", async (req,res)=>{
-  // db.movies.insertMany(movies)
-  const newMovies = req.body;
-  console.log(newMovies);
-  const movie=await addMovie(newMovies);
-  res.send(movie);
-});
-
-// export const moviesRouter = router;
+export const movieRouter = router;
