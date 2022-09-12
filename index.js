@@ -7,8 +7,10 @@
 import express from "express";
 import { MongoClient } from "mongodb";
 import dotenv from 'dotenv';
-import { getMoviesById, deleteMovieById, getAllMovies, addMovie } from "./helper.js";
+import { getMoviesById, deleteMovieById, getAllMovies, addMovie, genPassword } from "./helper.js";
 import { movieRouter } from './Routes/movies.js';
+import { userRouter } from "./Routes/user.js";
+import bcrypt from "bcrypt";
 
 dotenv.config()
 
@@ -38,6 +40,8 @@ app.get("/", (req,res)=>{
 
 
 app.use("/movies", movieRouter)
+app.use("/user", userRouter)
+
 
 app.use(() => {
   console.log('Some one called the api');
