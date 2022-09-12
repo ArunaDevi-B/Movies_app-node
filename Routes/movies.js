@@ -1,6 +1,6 @@
 import express from 'express';
 import { Db } from 'mongodb';
-import { getMoviesById, deleteMovieById, getAllMovies, addMovie, updateMovie } from "../helper.js";
+import { getMoviesById, deleteMovieById, getAllMovies, addMovie, updateMovieById } from "../helper.js";
 
 const router = express.Router();
 
@@ -55,7 +55,7 @@ router.put("/:id",async(req,res)=>{
   const { id } = req.params;
   const updateMovie = req.body;
   // db.movies.updateOne({id : "6"}, { $set : updateMovie})
-  const updatedMovie = await updateMovie(updateMovie, id)
+  const updatedMovie = await updateMovieById(updateMovie, id)
   res.send(updatedMovie);
 })
 

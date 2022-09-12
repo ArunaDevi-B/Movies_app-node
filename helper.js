@@ -13,6 +13,6 @@ export async function deleteMovieById(id) {
 export async function addMovie(newMovies) {
   return await client.db("b37wd").collection("movies").insertMany(newMovies);
 }
-export async function updateMovie(updateMovie, id) {
+export async function updateMovieById(updateMovie, id) {
   return await client.db("b37wd").collection("movies").updateOne({id : id}, {$set: updateMovie})
 }
