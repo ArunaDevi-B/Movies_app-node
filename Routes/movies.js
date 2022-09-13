@@ -1,7 +1,7 @@
 import express from 'express';
 import { Db } from 'mongodb';
 import { getMoviesById, deleteMovieById, getAllMovies, addMovie, updateMovieById } from "../helper.js";
-
+import { auth } from "../middleware/auth.js";
 const router = express.Router();
 
 
