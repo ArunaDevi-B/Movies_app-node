@@ -39,6 +39,10 @@ app.get("/", (req,res)=>{
   res.send("Hello Everyone :D")
 })
 
+app.get("/hi", (req,res)=>{
+  res.send("hi Everyone :D")
+})
+
 
 app.use("/movies", movieRouter)
 app.use("/user", userRouter)
